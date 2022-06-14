@@ -20,8 +20,22 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-const HomePage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+const HomePage = (props) => {
+  return <MeetupList meetups={props.meetups} />;
 };
+
+
+// this is Static Generation, async is allow, nextjs will look for this func 
+// with this reserved name to fetch data before return this component
+// only allowed in pages component (inside pages folder)
+// client will not see but the server will provide since production build process
+export const getStaticProps = async () => {
+  // fetch data from a server
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS
+    }
+  }
+}
 
 export default HomePage;
