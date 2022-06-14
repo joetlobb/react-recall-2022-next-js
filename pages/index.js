@@ -24,8 +24,7 @@ const HomePage = (props) => {
   return <MeetupList meetups={props.meetups} />;
 };
 
-
-// this is Static Generation, async is allow, nextjs will look for this func 
+// this is Static Generation, async is allow, nextjs will look for this func
 // with this reserved name to fetch data before return this component
 // only allowed in pages component (inside pages folder)
 // client will not see but the server will provide since production build process
@@ -33,9 +32,12 @@ export const getStaticProps = async () => {
   // fetch data from a server
   return {
     props: {
-      meetups: DUMMY_MEETUPS
-    }
-  }
-}
+      meetups: DUMMY_MEETUPS,
+    },
+    // this property will regenerate this page in seconds,
+    // so this page will never be older than 1 second
+    revalidate: 1,
+  };
+};
 
 export default HomePage;
