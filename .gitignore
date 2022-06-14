@@ -30,3 +30,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# password for mongodb
+/pages/api/mongodb.js
