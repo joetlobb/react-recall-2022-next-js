@@ -10,7 +10,7 @@ const HomePage = (props) => {
         <title>React Meetups</title>
         <meta name='description' content='Browse a list of meetups!' />
       </Head>
-      <h1>{process.env.NEXT_PUBLIC_GNAME}</h1>
+      <h1>{process.env.NEXT_PUBLIC_GNAME} ++</h1>
       <MeetupList meetups={props.meetups} />
     </Fragment>
   );
