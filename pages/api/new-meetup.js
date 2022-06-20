@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb";
-import { mongoUser, mongoPassword } from "./mongodb";
 
 // /api/new-meetup
 // POST /api/new-meetup
@@ -9,7 +8,7 @@ async function handler(req, res) {
     const data = req.body;
 
     const client = await MongoClient.connect(
-      `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority`
+      'mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority'
     );
     const db = client.db();
 

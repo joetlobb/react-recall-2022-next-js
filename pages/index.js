@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import { MongoClient } from "mongodb";
-import { mongoUser, mongoPassword } from "./api/mongodb";
 import MeetupList from "../components/meetups/MeetupList";
 
 const HomePage = (props) => {
@@ -25,7 +24,7 @@ export const getStaticProps = async () => {
   // it is safe to put credentials here but for github, the code is store in seperate file.
 
   const client = await MongoClient.connect(
-    `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority`
+    'mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority'
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");

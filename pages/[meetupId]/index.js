@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import Head from "next/head";
 import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
-import { mongoPassword, mongoUser } from "../api/mongodb";
 
 const MeetupDetails = (props) => {
   return (
@@ -23,7 +22,7 @@ const MeetupDetails = (props) => {
 
 export const getStaticPaths = async () => {
   const client = await MongoClient.connect(
-    `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority`
+    'mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority'
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
@@ -44,7 +43,7 @@ export const getStaticProps = async (context) => {
   const meetupId = context.params.meetupId;
 
   const client = await MongoClient.connect(
-    `mongodb+srv://${mongoUser}:${mongoPassword}@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority`
+    "mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority"
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
