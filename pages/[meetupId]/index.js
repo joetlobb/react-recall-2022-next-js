@@ -21,9 +21,7 @@ const MeetupDetails = (props) => {
 };
 
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(
-    "mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.MONGODB_API);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
@@ -34,7 +32,7 @@ export const getStaticPaths = async () => {
     // if fallback false: it means that we have declared all support paths
     // if fallback is set to true the blank page will be served until the page is generated
     // if fallback is 'blocking', user will not see anything until it pre generated and finished page will be serve
-    fallback: 'blocking',
+    fallback: "blocking",
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
@@ -44,9 +42,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const meetupId = context.params.meetupId;
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.MONGODB_API);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const selectedMeetup = await meetupsCollection.findOne({

@@ -8,7 +8,7 @@ const HomePage = (props) => {
     <Fragment>
       <Head>
         <title>React Meetups</title>
-        <meta name='description' content='Browse a list of meetups!' />
+        <meta name="description" content="Browse a list of meetups!" />
       </Head>
       <h1>{process.env.NEXT_PUBLIC_GNAME} ++</h1>
       <MeetupList meetups={props.meetups} />
@@ -24,9 +24,7 @@ export const getStaticProps = async () => {
   // fetch data from a server, the code inside getStaticProps will not be exposed to user
   // it is safe to put credentials here but for github, the code is store in seperate file.
 
-  const client = await MongoClient.connect(
-    'mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority'
-  );
+  const client = await MongoClient.connect(process.env.MONGODB_API);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetups = await meetupsCollection.find().toArray();
