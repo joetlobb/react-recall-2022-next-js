@@ -22,7 +22,7 @@ const MeetupDetails = (props) => {
 
 export const getStaticPaths = async () => {
   const client = await MongoClient.connect(
-    'mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority'
+    "mongodb+srv://Gulyapasp:HsynC5wt0iMu6ThG@cluster0.gdiyk.mongodb.net/meetups?retryWrites=true&w=majority"
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
@@ -32,7 +32,9 @@ export const getStaticPaths = async () => {
   return {
     // if fallback true: others page not supported will be generated from the server
     // if fallback false: it means that we have declared all support paths
-    fallback: false,
+    // if fallback is set to true the blank page will be served until the page is generated
+    // if fallback is 'blocking', user will not see anything until it pre generated and finished page will be serve
+    fallback: 'blocking',
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
