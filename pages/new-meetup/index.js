@@ -29,6 +29,7 @@ const NewMeetupPage = () => {
         <meta name="description" content="Add your own meetup" />
       </Head>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
+      <p>Note: new meetup will appear in the all meetups page about 10 seconds after submit!</p>
     </Fragment>
   );
 };
